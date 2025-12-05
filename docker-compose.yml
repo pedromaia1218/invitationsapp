@@ -16,7 +16,7 @@ services:
       dockerfile: dev.dockerfile
     command: bash -lc "bundle exec rails s -b 0.0.0.0"
     volumes:
-      - .:/app:cached
+      - .:/rails:cached
       - bundle-data:/usr/local/bundle
     ports:
       - "3000:3000"
@@ -30,15 +30,15 @@ services:
     build:
       context: .
       dockerfile: dev.dockerfile
+    command: bash -lc "bundle exec rails test"
+    volumes:
+      - .:/rails:cached
+      - bundle-data:/usr/local/bundle
     depends_on:
       - db
     environment:
       RAILS_ENV: test
       DATABASE_URL: "postgres://postgres:postgres@db/invitationsapp_test"
-    volumes:
-      - .:/app:cached
-      - bundle-data:/usr/local/bundle
-    command: bash -lc "bundle exec rails test"
 
 volumes:
   db-data:
