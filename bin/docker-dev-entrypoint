@@ -7,7 +7,8 @@ fi
 
 # If running the rails server then create or migrate existing database
 if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
-  ./bin/rails db:prepare
+  echo "Preparing database for development environment..."
+  bundle exec rake db:prepare
 fi
 
-exec "${@}"
+exec "$@"
