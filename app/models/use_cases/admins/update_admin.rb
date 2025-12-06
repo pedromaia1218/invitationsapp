@@ -3,6 +3,9 @@
 module UseCases
   module Admins
     class UpdateAdmin < Micro::Case
+      flow UseCases::Admins::ValidateParams,
+           self.call!
+
       attributes :admin, :params, :current_admin
 
       def call!

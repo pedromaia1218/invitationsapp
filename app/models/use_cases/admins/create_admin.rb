@@ -3,6 +3,9 @@
 module UseCases
   module Admins
     class CreateAdmin < Micro::Case
+      flow UseCases::Admins::ValidateParams,
+           self.call!
+
       attributes :params
 
       def call!
