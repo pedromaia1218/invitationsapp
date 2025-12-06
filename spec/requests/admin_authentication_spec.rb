@@ -31,7 +31,7 @@ RSpec.describe "Admin authentication", type: :request do
     end
   end
 
-  describe "DELETE /admins/sign_out" do
+  describe "request to log out" do
     before do
       sign_in admin
     end

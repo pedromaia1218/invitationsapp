@@ -1,0 +1,53 @@
+<div>
+  <div>
+    <h1>Administradores</h1>
+    <%= link_to "Novo Administrador", new_admin_path %>
+  </div>
+
+  <% if notice %>
+    <div>
+      <%= notice %>
+    </div>
+  <% end %>
+
+  <% if alert %>
+    <div>
+      <%= alert %>
+    </div>
+  <% end %>
+
+  <div >
+    <table>
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Criado Em</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @admins.each do |admin| %>
+          <tr>
+            <td>
+              <%= admin.email %>
+            </td>
+            <td>
+              <%= admin.created_at.strftime("%B %d, %Y") %>
+            </td>
+            <td>
+              <%= link_to "Editar", edit_admin_path(admin) %>
+              <% unless admin.id == current_admin.id %>
+                <%= button_to "Deletar", admin_path(admin), method: :delete, 
+                    data: { confirm: "Tem certeza de que deseja deletar este administrador?" } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <%= paginate @admins %>
+  </div>
+</div>

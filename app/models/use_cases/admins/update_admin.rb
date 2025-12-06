@@ -1,0 +1,17 @@
+# frozen_string_literal: true
+
+module UseCases
+  module Admins
+    class UpdateAdmin < Micro::Case
+      attributes :admin, :params, :current_admin
+
+      def call!
+        if admin.update(params)
+          Success result: { admin: admin }
+        else
+          Failure :invalid_admin, result: { errors: admin.errors.full_messages }
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,35 @@
+<div>
+  <h1>Editar Administrador</h1>
+
+  <% if @errors.present? %>
+    <div>
+      <ul>
+        <% @errors.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_with model: @admin, url: admin_path(@admin), method: :patch do |f| %>
+    <div>
+      <%= f.label :email %>
+      <%= f.email_field :email, required: true %>
+    </div>
+
+    <div>
+      <%= f.label :password, "Nova Senha (deixe em branco para manter a atual)" %>
+      <%= f.password_field :password %>
+    </div>
+
+    <div>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+
+    <div>
+      <%= f.submit "Atualizar Administrador" %>
+      <%= link_to "Cancelar", admins_path %>
+    </div>
+  <% end %>
+</div>
