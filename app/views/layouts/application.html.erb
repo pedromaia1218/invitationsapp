@@ -13,11 +13,24 @@
   <body>
     <% if admin_signed_in? %>
       <header>
+        <nav>
+          <%= link_to 'Administradores', admins_path %>
+          <%= link_to 'Empresas', companies_path %>
+          <%= link_to 'Convites', invitations_path %>
+        </nav>
         <p>
           logado como: <%= current_admin.email %>
           <%= button_to "Logout", destroy_admin_session_path, method: :delete %>
         </p>
       </header>
+    <% end %>
+    
+    <% if notice.present? %>
+      <p style="color: green;"><%= notice %></p>
+    <% end %>
+    
+    <% if alert.present? %>
+      <p style="color: red;"><%= alert %></p>
     <% end %>
     
     <%= yield %>

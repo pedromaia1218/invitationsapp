@@ -21,7 +21,11 @@ class AdminsController < ApplicationController
     UseCases::Admins::CreateAdmin
       .call(params: admin_params)
       .on_success { |result| redirect_to admins_path, notice: 'Administrador criado com sucesso.' }
-      .on_failure { |result| @errors = result[:errors]; render :new, status: :unprocessable_entity }
+      .on_failure { |result|
+        @admin = Admin.new(admin_params)
+        @errors = result[:errors]
+        render :new, status: :unprocessable_entity
+      }
   end
 
   def edit

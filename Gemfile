@@ -88,3 +88,5 @@ gem "u-case", "~> 4.5"
 
 # Pagination
 gem "kaminari", "~> 1.2"
+
+gem "cpf_cnpj"

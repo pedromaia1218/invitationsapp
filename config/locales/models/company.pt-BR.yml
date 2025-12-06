@@ -1,0 +1,8 @@
+pt-BR:
+  activerecord:
+    attributes:
+      company:
+        name: Nome
+        cnpj: CNPJ
+        address: Endereço
+        active: Ativo

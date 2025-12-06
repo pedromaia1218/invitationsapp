@@ -1,0 +1,39 @@
+<h1>Nova Empresa</h1>
+
+<% if @errors.present? %>
+  <div>
+    <h3>Erros:</h3>
+    <ul>
+      <% @errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @company, url: companies_path do |f| %>
+  <div>
+    <%= f.label :name, 'Nome' %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :cnpj, 'CNPJ' %>
+    <%= f.text_field :cnpj %>
+  </div>
+
+  <div>
+    <%= f.label :address, 'Endereço' %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div>
+    <%= f.label :active, 'Ativo' %>
+    <%= f.check_box :active %>
+  </div>
+
+  <div>
+    <%= f.submit 'Criar Empresa' %>
+    <%= link_to 'Cancelar', companies_path %>
+  </div>
+<% end %>
