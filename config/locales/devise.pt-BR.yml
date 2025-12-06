@@ -1,0 +1,39 @@
+pt-BR:
+  devise:
+    sessions:
+      signed_in: "Login efetuado com sucesso."
+      signed_out: "Logout efetuado com sucesso."
+      new:
+        sign_in: "Entrar"
+    passwords:
+      send_instructions: "Você receberá um e-mail com instruções sobre como redefinir sua senha em alguns minutos."
+      updated: "Sua senha foi alterada com sucesso."
+      new:
+        forgot_your_password: "Esqueceu sua senha?"
+        send_me_reset_password_instructions: "Enviar instruções"
+      edit:
+        change_your_password: "Alterar senha"
+        change_my_password: "Alterar senha"
+        new_password: "Nova senha"
+        confirm_new_password: "Confirmar nova senha"
+    registrations:
+      signed_up: "Cadastro realizado com sucesso."
+      updated: "Sua conta foi atualizada com sucesso."
+      destroyed: "Sua conta foi cancelada com sucesso."
+      new:
+        sign_up: "Cadastrar"
+    shared:
+      links:
+        sign_in: "Entrar"
+        sign_up: "Cadastrar"
+        forgot_your_password: "Esqueceu sua senha?"
+      minimum_password_length:
+        one: "mínimo de %{count} caractere"
+        other: "mínimo de %{count} caracteres"
+    failure:
+      invalid: "E-mail ou senha inválidos."
+      not_found_in_database: "E-mail ou senha inválidos."
+      unauthenticated: "Você precisa fazer login para continuar."
+
+
+

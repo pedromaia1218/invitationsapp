@@ -1,0 +1,12 @@
+# Traduções específicas da aplicação
+pt-BR:
+  admins:
+    index:
+      title: "Administradores"
+      new_admin: "Novo Administrador"
+    new:
+      title: "Novo Administrador"
+    edit:
+      title: "Editar Administrador"
+
+

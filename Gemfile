@@ -49,6 +49,11 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
 
   gem "byebug", "~> 12.0"
+  
+  # Testing gems
+  gem "rspec-rails", "~> 6.1.0"
+  gem "factory_bot_rails"
+  gem "faker"
 end
 
 group :development do
@@ -60,13 +65,25 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  # Annotate models with schema
+  gem 'annotate'
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+
+  gem "shoulda-matchers", "~> 6.0"
+  gem "database_cleaner-active_record"
 end
 
 # Authentication gem
 gem "devise", "~> 4.9"
+
+# Use cases pattern
+gem "u-case", "~> 4.5"
+
+# Pagination
+gem "kaminari", "~> 1.2"

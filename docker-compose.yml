@@ -17,7 +17,6 @@ services:
     command: bash -lc "bundle exec rails s -b 0.0.0.0"
     volumes:
       - .:/rails:cached
-      - bundle-data:/usr/local/bundle
     ports:
       - "3000:3000"
     depends_on:
@@ -33,7 +32,6 @@ services:
     command: bash -lc "bundle exec rails test"
     volumes:
       - .:/rails:cached
-      - bundle-data:/usr/local/bundle
     depends_on:
       - db
     environment:

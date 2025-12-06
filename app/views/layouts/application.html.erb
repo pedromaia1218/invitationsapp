@@ -11,6 +11,15 @@
   </head>
 
   <body>
+    <% if admin_signed_in? %>
+      <header>
+        <p>
+          logado como: <%= current_admin.email %>
+          <%= button_to "Logout", destroy_admin_session_path, method: :delete %>
+        </p>
+      </header>
+    <% end %>
+    
     <%= yield %>
   </body>
 </html>
