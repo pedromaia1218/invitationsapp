@@ -83,10 +83,14 @@ end
 # Authentication gem
 gem "devise", "~> 4.9"
 
+# Authentication for API
+gem "doorkeeper"
+
 # Use cases pattern
 gem "u-case", "~> 4.5"
 
 # Pagination
 gem "kaminari", "~> 1.2"
 
+# CPF/CNPJ validation
 gem "cpf_cnpj"

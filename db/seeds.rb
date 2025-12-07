@@ -9,10 +9,27 @@
 #   end
 
 # Create initial admin user
-Admin.find_or_create_by!(email: 'teste@teste.com') do |admin|
-  admin.password = 'qwe123'
-  admin.password_confirmation = 'qwe123'
-  puts "Created admin user: #{admin.email}"
+admin = Admin.find_or_create_by!(email: 'teste@teste.com') do |a|
+  a.password = 'qwe123'
+  a.password_confirmation = 'qwe123'
+  puts "Created admin user: #{a.email}"
 end
 
-puts "Seeds completed successfully!"
+# Create OAuth Application for api testing
+app = Doorkeeper::Application.find_or_create_by!(name: 'API application for testing') do |application|
+  application.redirect_uri = 'urn:ietf:wg:oauth:2.0:oob'
+  application.scopes = ''
+  puts "Created OAuth Application: #{application.name}"
+end
+
+puts "\n#####################################################"
+puts "\nTo get an access token, use:"
+puts "  curl -X POST http://localhost:3000/oauth/token \\"
+puts "    -d 'grant_type=password' \\"
+puts "    -d 'email=teste@teste.com' \\"
+puts "    -d 'password=qwe123' \\"
+puts "    -d 'client_id=#{app.uid}' \\"
+puts "    -d 'client_secret=#{app.secret}'"
+puts "#######################################################"
+
+puts "\nSeeds completed successfully!"

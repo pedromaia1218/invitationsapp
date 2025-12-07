@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  use_doorkeeper
   devise_for :admins
 
   resources :admins, except: [:show]
@@ -13,4 +14,13 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root to: 'admins#index', as: :admin_root
+
+  ##############
+  ### API v1 ###
+  ##############
+  namespace :api do
+    namespace :v1 do
+      resources :invitations, only: [:index, :show, :create, :update, :destroy]
+    end
+  end
 end
