@@ -46,6 +46,8 @@ docker compose build dev
 docker compose run dev bundle exec rails db:create db:migrate db:seed
 ```
 
+> **Nota:** Nessa etapa é possível ocorrer um erro de porta indisponível caso a porta 5435 já esteja ocupada por outra aplicação, nesse caso alterar a porta "5435:5432" na linha 5 do arquivo docker-compose.yml para alguma outra disponível
+
 Isso criará:
 1. Admin padrão para testes com:
     - Email: `teste@teste.com`
