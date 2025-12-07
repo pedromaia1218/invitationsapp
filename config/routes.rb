@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :admins, except: [:show]
   resources :companies, except: [:show]
+  resources :invitations, except: [:show]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -9,7 +9,6 @@ class CreateCompanies < ActiveRecord::Migration[7.1]
       t.timestamps
     end
 
-    add_index :companies, :name
     add_index :companies, :cnpj, unique: true
   end
 end

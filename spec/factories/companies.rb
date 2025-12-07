@@ -13,7 +13,6 @@
 # Indexes
 #
 #  index_companies_on_cnpj  (cnpj) UNIQUE
-#  index_companies_on_name  (name)
 #
 FactoryBot.define do
   factory :company do

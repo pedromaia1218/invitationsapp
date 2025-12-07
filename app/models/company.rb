@@ -15,7 +15,6 @@
 # Indexes
 #
 #  index_companies_on_cnpj  (cnpj) UNIQUE
-#  index_companies_on_name  (name)
 #
 class Company < ApplicationRecord
   has_many :invitations, dependent: :destroy
@@ -26,6 +25,8 @@ class Company < ApplicationRecord
   validate :cnpj_must_be_valid
 
   before_validation :clean_cnpj
+
+  scope :active, -> { where(active: true) }
 
   private
 

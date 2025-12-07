@@ -13,7 +13,6 @@
 # Indexes
 #
 #  index_companies_on_cnpj  (cnpj) UNIQUE
-#  index_companies_on_name  (name)
 #
 require 'rails_helper'
 
@@ -46,6 +45,10 @@ RSpec.describe Company, type: :model do
         expect(company.cnpj).to eq('11222333000181')
       end
     end
+  end
+
+  describe 'associations' do
+    it { should have_many(:invitations).dependent(:destroy) }
   end
 
   describe 'factory' do

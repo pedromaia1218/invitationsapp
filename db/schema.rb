@@ -34,6 +34,23 @@ ActiveRecord::Schema[7.1].define(version: 2025_12_06_203452) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cnpj"], name: "index_companies_on_cnpj", unique: true
-    t.index ["name"], name: "index_companies_on_name"
   end
+
+  create_table "invitations", force: :cascade do |t|
+    t.string "username", null: false
+    t.integer "invitation_type", default: 0, null: false
+    t.string "cpf"
+    t.string "email"
+    t.string "code"
+    t.bigint "company_id", null: false
+    t.boolean "active", default: true, null: false
+    t.datetime "activated_at"
+    t.datetime "deactivated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["active"], name: "index_invitations_on_active"
+    t.index ["company_id"], name: "index_invitations_on_company_id"
+  end
+
+  add_foreign_key "invitations", "companies"
 end

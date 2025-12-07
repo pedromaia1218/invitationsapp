@@ -1,0 +1,54 @@
+<h1>Novo Convite</h1>
+
+<% if @errors.present? %>
+  <div>
+    <h3>Erros:</h3>
+    <ul>
+      <% @errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @invitation, url: invitations_path do |f| %>
+  <div>
+    <%= f.label :username, 'Nome' %>
+    <%= f.text_field :username %>
+  </div>
+
+  <div>
+    <%= f.label :company_id, 'Empresa' %>
+    <%= f.collection_select :company_id, @companies, :id, :name, { prompt: 'Selecione uma empresa' } %>
+  </div>
+
+  <div>
+    <%= f.label :invitation_type, 'Tipo' %>
+    <%= f.select :invitation_type, Invitation.invitation_types.keys.map { |k| [I18n.t("enums.invitation.invitation_type.#{k}"), k] }, { prompt: 'Selecione o tipo' } %>
+  </div>
+
+  <div>
+    <%= f.label :cpf, 'CPF' %>
+    <%= f.text_field :cpf %>
+  </div>
+
+  <div>
+    <%= f.label :email, 'Email' %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :code, 'Código' %>
+    <%= f.text_field :code %>
+  </div>
+
+  <div>
+    <%= f.label :active, 'Ativo' %>
+    <%= f.check_box :active %>
+  </div>
+
+  <div>
+    <%= f.submit 'Criar Convite' %>
+    <%= link_to 'Cancelar', invitations_path %>
+  </div>
+<% end %>

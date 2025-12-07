@@ -1,0 +1,24 @@
+pt-BR:
+  activerecord:
+    attributes:
+      invitation:
+        username: Nome do Usuário
+        invitation_type: Tipo
+        cpf: CPF
+        email: Email
+        code: Código
+        company_id: Empresa
+        company: Empresa
+        active: Ativo
+    errors:
+      models:
+        invitation:
+          attributes:
+            company:
+              required: deve ser selecionada
+  enums:
+    invitation:
+      invitation_type:
+        cpf: CPF
+        email: Email
+        code: Código

@@ -1,0 +1,68 @@
+<h1>Convites</h1>
+
+<%= link_to 'Novo Convite', new_invitation_path %>
+
+<%= form_with url: invitations_path, method: :get do |f| %>
+  <div>
+    <%= f.label :username, 'Nome' %>
+    <%= f.text_field :username, value: params[:username] %>
+  </div>
+
+  <div>
+    <%= f.label :company_id, 'Empresa' %>
+    <%= f.collection_select :company_id, @companies, :id, :name, { include_blank: 'Todas' }, { selected: params[:company_id] } %>
+  </div>
+
+  <div>
+    <%= f.label :start_date, 'Data Início' %>
+    <%= f.date_field :start_date, value: params[:start_date] %>
+  </div>
+
+  <div>
+    <%= f.label :end_date, 'Data Fim' %>
+    <%= f.date_field :end_date, value: params[:end_date] %>
+  </div>
+
+  <div>
+    <%= f.submit 'Filtrar' %>
+    <%= link_to 'Limpar', invitations_path %>
+  </div>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Tipo</th>
+      <th>CPF/Email/Código</th>
+      <th>Empresa</th>
+      <th>Status</th>
+      <th>Ativado em</th>
+      <th>Desativado em</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @invitations.each do |invitation| %>
+      <tr>
+        <td><%= invitation.username %></td>
+        <td><%= I18n.t("enums.invitation.invitation_type.#{invitation.invitation_type}") %></td>
+        <td>
+          <%= invitation.cpf if invitation.cpf? %>
+          <%= invitation.email if invitation.email? %>
+          <%= invitation.code if invitation.code? %>
+        </td>
+        <td><%= invitation.company.name %></td>
+        <td><%= invitation.active? ? 'Ativo' : 'Inativo' %></td>
+        <td><%= invitation.activated_at&.strftime('%d/%m/%Y') %></td>
+        <td><%= invitation.deactivated_at&.strftime('%d/%m/%Y') %></td>
+        <td>
+          <%= link_to 'Editar', edit_invitation_path(invitation) %>
+          <%= button_to 'Excluir', invitation_path(invitation), method: :delete, data: { confirm: 'Tem certeza?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @invitations %>
